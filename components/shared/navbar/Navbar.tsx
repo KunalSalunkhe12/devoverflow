@@ -3,9 +3,8 @@ import Image from "next/image";
 
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import Theme from "./Theme";
+import Mobile from "./Mobile";
 
-// import Theme from "@/components/shared/navbar/Theme";
-// import Mobile from "@/components/shared/navbar/Mobile";
 // import GlobalSearch from "@/components/shared/search/GlobalSearch";
 
 const Navbar = () => {
@@ -41,7 +40,7 @@ const Navbar = () => {
             }}
           />
         </SignedIn>
-        {/* <Mobile /> */}
+        <Mobile />
       </div>
     </nav>
   );
