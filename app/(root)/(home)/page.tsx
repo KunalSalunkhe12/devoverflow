@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { HomePageFilters } from "@/constants/filters";
 import Filter from "@/components/shared/Filter";
+import HomeFilters from "@/components/home/HomeFilters";
+import NoResult from "@/components/shared/NoResult";
 
 export default async function Home() {
+  const result = [];
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -34,7 +37,22 @@ export default async function Home() {
         />
       </div>
 
-      {/* <HomeFilters filters={HomePageFilters} /> */}
+      <HomeFilters />
+
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {result.length > 0 ? (
+          "Questions"
+        ) : (
+          <NoResult
+            title="No Questions Found"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the
+          discussion. our query could be the next big thing others learn from. Get
+          involved! 💡"
+            link="/ask-question"
+            linkTitle="Ask a Question"
+          />
+        )}
+      </div>
     </>
   );
 }
