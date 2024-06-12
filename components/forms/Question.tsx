@@ -2,13 +2,12 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Editor } from "@tinymce/tinymce-react";
-
-import { QuestionValidation } from "@/lib/validations";
 
 import {
   Form,
@@ -22,20 +21,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { toast } from "@/components/ui/use-toast";
 
 import { useTheme } from "@/context/ThemeProvider";
 
+import { createQuestion, editQuestion } from "@/lib/actions/question.action";
+import { QuestionValidation } from "@/lib/validations";
+
 interface Props {
   type: string;
-  //   mongoUserId: string;
+  mongoUserId: string;
   questionDetails?: string;
 }
 
-const Question = ({ type, questionDetails }: Props) => {
+const Question = ({ type, mongoUserId, questionDetails }: Props) => {
   const { mode } = useTheme();
-  console.log(mode);
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const parsedQuestionDetails =
     questionDetails && JSON.parse(questionDetails || "");
@@ -54,11 +58,44 @@ const Question = ({ type, questionDetails }: Props) => {
   async function onSubmit(values: z.infer<typeof QuestionValidation>) {
     setIsSubmitting(true);
 
-    // try {j
-    // } catch (error) {
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+    try {
+      if (type === "Edit") {
+        await editQuestion({
+          questionId: parsedQuestionDetails._id,
+          title: values.title,
+          content: values.explanation,
+          path: pathname,
+        });
+        router.push(`/question/${parsedQuestionDetails._id}`);
+      } else {
+        await createQuestion({
+          title: values.title,
+          content: values.explanation,
+          tags: values.tags,
+          author: JSON.parse(mongoUserId),
+          path: pathname,
+        });
+
+        // navigate to home page
+        router.push("/");
+      }
+    } catch (error) {
+      toast({
+        title: `Error ${type === "Edit" ? "editing" : "posting"} question ⚠️`,
+        variant: "destructive",
+      });
+
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+
+      toast({
+        title: `Question ${
+          type === "Edit" ? "edited" : "posted"
+        } successfully 🎉`,
+        variant: "default",
+      });
+    }
   }
 
   const handleInputKeyDown = (
