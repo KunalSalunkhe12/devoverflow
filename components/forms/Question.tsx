@@ -21,12 +21,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { toast } from "@/components/ui/use-toast";
+// import { toast } from "@/components/ui/use-toast";
 
 import { useTheme } from "@/context/ThemeProvider";
 
-import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { QuestionValidation } from "@/lib/validations";
+import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 
 interface Props {
   type: string;
@@ -80,21 +80,21 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
         router.push("/");
       }
     } catch (error) {
-      toast({
-        title: `Error ${type === "Edit" ? "editing" : "posting"} question ⚠️`,
-        variant: "destructive",
-      });
+      // toast({
+      //   title: `Error ${type === "Edit" ? "editing" : "posting"} question ⚠️`,
+      //   variant: "destructive",
+      // });
 
       console.error(error);
     } finally {
       setIsSubmitting(false);
 
-      toast({
-        title: `Question ${
-          type === "Edit" ? "edited" : "posted"
-        } successfully 🎉`,
-        variant: "default",
-      });
+      // toast({
+      //   title: `Question ${
+      //     type === "Edit" ? "edited" : "posted"
+      //   } successfully 🎉`,
+      //   variant: "default",
+      // });
     }
   }
 
