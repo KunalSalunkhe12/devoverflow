@@ -16,7 +16,7 @@ const Page = async () => {
   if (!userId) return null;
 
   const mongoUser = await getUserById({ userId });
-  if (!mongoUser?.onboarded) redirect("/onboarding");
+  if (!mongoUser?.onboarded) redirect("/sign-up");
 
   return (
     <div>
