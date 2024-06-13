@@ -1,13 +1,12 @@
-// import type { Config } from "tailwindcss";
-
-const config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
-
   theme: {
     container: {
       center: true,
@@ -60,13 +59,11 @@ const config = {
       },
       keyframes: {
         "accordion-down": {
-          // @ts-ignore
           from: { height: 0 },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          // @ts-ignore
           to: { height: 0 },
         },
       },
@@ -78,4 +75,3 @@ const config = {
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
-export default config;
