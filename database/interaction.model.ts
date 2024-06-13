@@ -1,7 +1,7 @@
 import { Schema, models, model, Document } from "mongoose";
 
 export interface IInteraction extends Document {
-  user: Schema.Types.ObjectId;
+  user: Schema.Types.ObjectId; // ref to user
   action: string;
   question: Schema.Types.ObjectId;
   answer: Schema.Types.ObjectId;
@@ -12,9 +12,9 @@ export interface IInteraction extends Document {
 const InteractionSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   action: { type: String, required: true },
-  question: { type: Schema.Types.ObjectId, ref: "Question" },
-  answer: { type: Schema.Types.ObjectId, ref: "Answer" },
-  tags: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
+  question: { type: Schema.ObjectId, ref: "Question" },
+  answer: { type: Schema.ObjectId, ref: "Answer" },
+  tags: [{ type: Schema.ObjectId, ref: "Tag" }],
   createdAt: { type: Date, default: Date.now },
 });
 

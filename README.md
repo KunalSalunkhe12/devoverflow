@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DevOverFlow
 
-## Getting Started
+<p>A community-driven Q&A platform tailored for programming enthusiasts.</p>
 
-First, run the development server:
+## Preview 
+### Home
+![Screenshot (135)](https://github.com/sougata-github/DevOverFlow/assets/102734212/bacbe7f8-ddf1-4ac9-8a6c-e9e7b83338a5)
+### Community
+![Screenshot (136)](https://github.com/sougata-github/DevOverFlow/assets/102734212/7c819a7e-1035-468c-b775-9c945b0d8011)
+### Jobs
+![Screenshot (137)](https://github.com/sougata-github/DevOverFlow/assets/102734212/cf9627cd-624e-48a0-9923-c690448aac4a)
+### Profile
+![Screenshot (138)](https://github.com/sougata-github/DevOverFlow/assets/102734212/4ee56d23-d339-4fcb-a0f5-96b8c682a329)
+### Ask a question
+![Screenshot (139)](https://github.com/sougata-github/DevOverFlow/assets/102734212/96af161c-0791-4597-91cd-57759e27f59e)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Ask questions and answer questions.
+- Upvote, Downvote, and save questions.
+- Include code snippets in your answers.
+- Searching and filtering.
+- View Top Questions and Popular Tags.
+- Built-in recommendation algorithm.
+- Global Search across the database.
+- View all tags and tag-related questions.
+- View and Edit your profile.
+- Built-in badge system for earning badges.
+- View, search jobs or filter by location.
+- Light and Dark Mode.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- MongoDB
+- Mongoose
+- Clerk for Authentication
+- Shadcn UI for reusable components
+- PrismJS for syntax highlighting
+- React Icons
+- Zod for Form validation
+- TinyMCE for the editor
+- Query String
+- Next themes for theme management
+- JSearch API for job searching
+- Vercel for deployment

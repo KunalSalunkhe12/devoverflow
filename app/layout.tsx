@@ -1,11 +1,11 @@
+/* eslint-disable camelcase */
 import { ClerkProvider } from "@clerk/nextjs";
 import React from "react";
-// eslint-disable-next-line camelcase
 import { Inter, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
-
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeProvider";
+import "../styles/prism.css";
+import { Providers } from "./Providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,13 +15,14 @@ const inter = Inter({
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-spaceGrotesk",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-spaceGrotesk ",
 });
 
 export const metadata: Metadata = {
-  title: "Devoverflow",
-  description: "A Q&A platform for developers",
+  title: "DevOverFlow",
+  description:
+    "A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world.",
   icons: {
     icon: "/assets/images/site-logo.svg",
   },
@@ -33,8 +34,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} custom-scrollbar`}
+      >
         <ClerkProvider
           appearance={{
             elements: {
@@ -43,7 +46,7 @@ export default function RootLayout({
             },
           }}
         >
-          <ThemeProvider>{children}</ThemeProvider>
+          <Providers>{children}</Providers>
         </ClerkProvider>
       </body>
     </html>
